@@ -54,11 +54,13 @@ class Goban(object):
         Returns:
             a Boolean
         """
+        current_status = self.get_status(x, y)
         if visited is None:
+            if current_status == Status.EMPTY:
+                return False
             visited = set()
 
         visited |= {(x, y)}
-        current_status = self.get_status(x, y)
         adjacent_positions = [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
         for adjacent_position in adjacent_positions:
             if adjacent_position in visited:
