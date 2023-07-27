@@ -105,3 +105,13 @@ def test_board_with_only_one_position_that_is_empty():
     )
 
     assert goban.is_taken(0, 0) is False
+
+
+def test_board_with_only_one_position_that_is_black():
+    goban = Goban(
+        [
+            "#",
+        ]
+    )
+
+    assert goban.is_taken(0, 0) is True
