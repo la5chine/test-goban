@@ -42,5 +42,21 @@ class Goban(object):
         elif self.goban[y][x] == "#":
             return Status.BLACK
 
-    def is_taken(self, x, y):
-        pass
+    def is_taken(self, x, y, visited=None):
+        if visited is None:
+            visited = set()
+
+        visited |= {(x, y)}
+        current_status = self.get_status(x, y)
+        adjacent_positions = [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
+        for adjacent_position in adjacent_positions:
+            if adjacent_position in visited:
+                continue
+            adjacent_status = self.get_status(*adjacent_position)
+            if adjacent_status == Status.EMPTY:
+                return False
+            if adjacent_status == Status.OUT:
+                continue
+            if adjacent_status == current_status:
+                return self.is_taken(*adjacent_position, visited=visited)
+        return True
