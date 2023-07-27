@@ -85,3 +85,13 @@ def test_whether_an_empty_position_is_taken():
     assert goban.is_taken(1, 0) is False
     assert goban.is_taken(2, 0) is False
     assert goban.is_taken(2, 3) is False
+
+
+def test_empty_board():
+    goban = Goban(
+        [
+            "",
+        ]
+    )
+
+    assert goban.is_taken(0, 0) is False
