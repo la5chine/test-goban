@@ -56,7 +56,7 @@ class Goban(object):
         """
         current_status = self.get_status(x, y)
         if visited is None:
-            if current_status == Status.EMPTY:
+            if current_status in [Status.EMPTY, Status.OUT]:
                 return False
             visited = set()
 
