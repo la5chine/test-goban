@@ -42,7 +42,18 @@ class Goban(object):
         elif self.goban[y][x] == "#":
             return Status.BLACK
 
-    def is_taken(self, x, y, visited=None):
+    def is_taken(self, x, y, visited=None) -> bool:
+        """
+        Get whether a given position is taken or not
+
+        Args:
+            x: the x coordinate
+            y: the y coordinate
+            visited (optional): visited nodes
+
+        Returns:
+            a Boolean
+        """
         if visited is None:
             visited = set()
 
